@@ -7,22 +7,22 @@ import (
 	"net/http"
 )
 
-type BrecClient struct {
+type BlrecClient struct {
 	*Client
 }
 
-func NewBlrecClient(endpoint string) (*BrecClient, error) {
+func NewBlrecClient(endpoint string) (*BlrecClient, error) {
 	c, err := NewClient(endpoint)
 	if err != nil {
 		return nil, err
 	}
 
-	return &BrecClient{
+	return &BlrecClient{
 		Client: c,
 	}, nil
 }
 
-func NewBlrecClientWithAuth(endpoint, apiKey string) (*BrecClient, error) {
+func NewBlrecClientWithAuth(endpoint, apiKey string) (*BlrecClient, error) {
 	doer := &httpDoerWithAuth{
 		Client: http.DefaultClient,
 		apiKey: apiKey,
@@ -33,7 +33,7 @@ func NewBlrecClientWithAuth(endpoint, apiKey string) (*BrecClient, error) {
 		return nil, err
 	}
 
-	return &BrecClient{
+	return &BlrecClient{
 		Client: c,
 	}, nil
 }
