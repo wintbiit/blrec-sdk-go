@@ -1,4 +1,4 @@
-module github.com/wintbiit/blrec-sdk-go
+module github.com/wintbiit/blrec-sdk-golang
 
 go 1.18
 
@@ -19,7 +19,6 @@ require (
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/perimeterx/marshmallow v1.1.5 // indirect
 	golang.org/x/mod v0.17.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.20.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
