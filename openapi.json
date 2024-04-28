@@ -1,0 +1,3786 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Bilibili live streaming recorder web API",
+        "description": "Web API to communicate with the backend application",
+        "version": "v1"
+    },
+    "paths": {
+        "/api/v1/tasks/data": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Data",
+                "operationId": "get_task_data_api_v1_tasks_data_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Page",
+                            "exclusiveMinimum": true,
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Size",
+                            "maximum": 100.0,
+                            "minimum": 10.0,
+                            "type": "integer",
+                            "default": 100
+                        },
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/DataSelection"
+                                }
+                            ],
+                            "default": "all"
+                        },
+                        "name": "select",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/data": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get One Task Data",
+                "operationId": "get_one_task_data_api_v1_tasks__room_id__data_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/param": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Param",
+                "operationId": "get_task_param_api_v1_tasks__room_id__param_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/metadata": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Metadata",
+                "operationId": "get_task_metadata_api_v1_tasks__room_id__metadata_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/profile": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Stream Profile",
+                "operationId": "get_task_stream_profile_api_v1_tasks__room_id__profile_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/videos": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Video File Details",
+                "operationId": "get_task_video_file_details_api_v1_tasks__room_id__videos_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/danmakus": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get Task Danmaku File Details",
+                "operationId": "get_task_danmaku_file_details_api_v1_tasks__room_id__danmakus_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/info": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Update All Task Infos",
+                "operationId": "update_all_task_infos_api_v1_tasks_info_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/info": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Update Task Info",
+                "operationId": "update_task_info_api_v1_tasks__room_id__info_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/cut": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Can Cut Stream",
+                "operationId": "can_cut_stream_api_v1_tasks__room_id__cut_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Cut Stream",
+                "operationId": "cut_stream_api_v1_tasks__room_id__cut_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/start": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Start All Tasks",
+                "operationId": "start_all_tasks_api_v1_tasks_start_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/start": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Start Task",
+                "operationId": "start_task_api_v1_tasks__room_id__start_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/stop": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Stop All Tasks",
+                "operationId": "stop_all_tasks_api_v1_tasks_stop_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_stop_all_tasks_api_v1_tasks_stop_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/stop": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Stop Task",
+                "operationId": "stop_task_api_v1_tasks__room_id__stop_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_stop_task_api_v1_tasks__room_id__stop_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/recorder/enable": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Enable All Task Recorders",
+                "operationId": "enable_all_task_recorders_api_v1_tasks_recorder_enable_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/recorder/enable": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Enable Task Recorder",
+                "operationId": "enable_task_recorder_api_v1_tasks__room_id__recorder_enable_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/recorder/disable": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Disable All Task Recorders",
+                "operationId": "disable_all_task_recorders_api_v1_tasks_recorder_disable_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_disable_all_task_recorders_api_v1_tasks_recorder_disable_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}/recorder/disable": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Disable Task Recorder",
+                "operationId": "disable_task_recorder_api_v1_tasks__room_id__recorder_disable_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_disable_task_recorder_api_v1_tasks__room_id__recorder_disable_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{room_id}": {
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Add Task",
+                "description": "Add a task for a room.\n\nthe room_id argument can be both the real room id or the short room id.\n\nonly use the real room id for task management.\nthe short room id should be considered as a shorthand\nonly for adding tasks conveniently.",
+                "operationId": "add_task_api_v1_tasks__room_id__post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Remove Task",
+                "operationId": "remove_task_api_v1_tasks__room_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks": {
+            "delete": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Remove All Tasks",
+                "operationId": "remove_all_tasks_api_v1_tasks_delete",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/settings": {
+            "get": {
+                "tags": [
+                    "settings"
+                ],
+                "summary": "Get Settings",
+                "operationId": "get_settings_api_v1_settings_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Include",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "version",
+                                    "tasks",
+                                    "output",
+                                    "logging",
+                                    "biliApi",
+                                    "header",
+                                    "danmaku",
+                                    "recorder",
+                                    "postprocessing",
+                                    "space",
+                                    "emailNotification",
+                                    "serverchanNotification",
+                                    "pushdeerNotification",
+                                    "pushplusNotification",
+                                    "telegramNotification",
+                                    "barkNotification",
+                                    "webhooks"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "name": "include",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Exclude",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "version",
+                                    "tasks",
+                                    "output",
+                                    "logging",
+                                    "biliApi",
+                                    "header",
+                                    "danmaku",
+                                    "recorder",
+                                    "postprocessing",
+                                    "space",
+                                    "emailNotification",
+                                    "serverchanNotification",
+                                    "pushdeerNotification",
+                                    "pushplusNotification",
+                                    "telegramNotification",
+                                    "barkNotification",
+                                    "webhooks"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "name": "exclude",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingsOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "settings"
+                ],
+                "summary": "Change Settings",
+                "description": "Change settings of the application\n\nChange network request headers will cause\n**all** the Danmaku client be **reconnected**!",
+                "operationId": "change_settings_api_v1_settings_patch",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SettingsIn"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingsOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/settings/tasks/{room_id}": {
+            "get": {
+                "tags": [
+                    "settings"
+                ],
+                "summary": "Get Task Options",
+                "operationId": "get_task_options_api_v1_settings_tasks__room_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskOptions"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "settings"
+                ],
+                "summary": "Change Task Options",
+                "description": "Change task-specific options\n\nTask-specific options will shadow the corresponding global settings.\nExplicitly set options to **null** will remove the value shadowing.\n\nChange network request headers will cause\nthe Danmaku client be **reconnected**!",
+                "operationId": "change_task_options_api_v1_settings_tasks__room_id__patch",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Room Id",
+                            "type": "integer"
+                        },
+                        "name": "room_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TaskOptions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskOptions"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/app/status": {
+            "get": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Get App Status",
+                "operationId": "get_app_status_api_v1_app_status_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/app/info": {
+            "get": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Get App Info",
+                "operationId": "get_app_info_api_v1_app_info_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/app/restart": {
+            "post": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Restart App",
+                "operationId": "restart_app_api_v1_app_restart_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/app/exit": {
+            "post": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Exit App",
+                "operationId": "exit_app_api_v1_app_exit_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/validation/dir": {
+            "post": {
+                "tags": [
+                    "validation"
+                ],
+                "summary": "Validate Dir",
+                "description": "Check if the path is a directory and grants the read, write permissions",
+                "operationId": "validate_dir_api_v1_validation_dir_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_validate_dir_api_v1_validation_dir_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/validation/cookie": {
+            "post": {
+                "tags": [
+                    "validation"
+                ],
+                "summary": "Validate Cookie",
+                "description": "Check if the cookie is valid",
+                "operationId": "validate_cookie_api_v1_validation_cookie_post",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_validate_cookie_api_v1_validation_cookie_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/update/version/latest": {
+            "get": {
+                "tags": [
+                    "update"
+                ],
+                "summary": "Get Latest Version",
+                "operationId": "get_latest_version_api_v1_update_version_latest_get",
+                "parameters": [
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "X-Api-Key",
+                            "type": "string"
+                        },
+                        "name": "x-api-key",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BarkNotificationSettings": {
+                "title": "BarkNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "server": {
+                        "title": "Server",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "pushkey": {
+                        "title": "Pushkey",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "BiliApiSettings": {
+                "title": "BiliApiSettings",
+                "type": "object",
+                "properties": {
+                    "baseApiUrls": {
+                        "title": "Baseapiurls",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": [
+                            "https://api.bilibili.com"
+                        ]
+                    },
+                    "baseLiveApiUrls": {
+                        "title": "Baseliveapiurls",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": [
+                            "https://api.live.bilibili.com"
+                        ]
+                    },
+                    "basePlayInfoApiUrls": {
+                        "title": "Baseplayinfoapiurls",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": [
+                            "https://api.live.bilibili.com"
+                        ]
+                    }
+                }
+            },
+            "Body_disable_all_task_recorders_api_v1_tasks_recorder_disable_post": {
+                "title": "Body_disable_all_task_recorders_api_v1_tasks_recorder_disable_post",
+                "type": "object",
+                "properties": {
+                    "force": {
+                        "title": "Force",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "background": {
+                        "title": "Background",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "Body_disable_task_recorder_api_v1_tasks__room_id__recorder_disable_post": {
+                "title": "Body_disable_task_recorder_api_v1_tasks__room_id__recorder_disable_post",
+                "type": "object",
+                "properties": {
+                    "force": {
+                        "title": "Force",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "background": {
+                        "title": "Background",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "Body_stop_all_tasks_api_v1_tasks_stop_post": {
+                "title": "Body_stop_all_tasks_api_v1_tasks_stop_post",
+                "type": "object",
+                "properties": {
+                    "force": {
+                        "title": "Force",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "background": {
+                        "title": "Background",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "Body_stop_task_api_v1_tasks__room_id__stop_post": {
+                "title": "Body_stop_task_api_v1_tasks__room_id__stop_post",
+                "type": "object",
+                "properties": {
+                    "force": {
+                        "title": "Force",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "background": {
+                        "title": "Background",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "Body_validate_cookie_api_v1_validation_cookie_post": {
+                "title": "Body_validate_cookie_api_v1_validation_cookie_post",
+                "required": [
+                    "cookie"
+                ],
+                "type": "object",
+                "properties": {
+                    "cookie": {
+                        "title": "Cookie",
+                        "type": "string"
+                    }
+                }
+            },
+            "Body_validate_dir_api_v1_validation_dir_post": {
+                "title": "Body_validate_dir_api_v1_validation_dir_post",
+                "required": [
+                    "path"
+                ],
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "title": "Path",
+                        "type": "string"
+                    }
+                }
+            },
+            "CoverSaveStrategy": {
+                "title": "CoverSaveStrategy",
+                "enum": [
+                    "default",
+                    "dedup"
+                ],
+                "description": "An enumeration."
+            },
+            "DanmakuOptions": {
+                "title": "DanmakuOptions",
+                "type": "object",
+                "properties": {
+                    "danmuUname": {
+                        "title": "Danmuuname",
+                        "type": "boolean"
+                    },
+                    "recordGiftSend": {
+                        "title": "Recordgiftsend",
+                        "type": "boolean"
+                    },
+                    "recordFreeGifts": {
+                        "title": "Recordfreegifts",
+                        "type": "boolean"
+                    },
+                    "recordGuardBuy": {
+                        "title": "Recordguardbuy",
+                        "type": "boolean"
+                    },
+                    "recordSuperChat": {
+                        "title": "Recordsuperchat",
+                        "type": "boolean"
+                    },
+                    "saveRawDanmaku": {
+                        "title": "Saverawdanmaku",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "DanmakuSettings": {
+                "title": "DanmakuSettings",
+                "type": "object",
+                "properties": {
+                    "danmuUname": {
+                        "title": "Danmuuname",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "recordGiftSend": {
+                        "title": "Recordgiftsend",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordFreeGifts": {
+                        "title": "Recordfreegifts",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordGuardBuy": {
+                        "title": "Recordguardbuy",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordSuperChat": {
+                        "title": "Recordsuperchat",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "saveRawDanmaku": {
+                        "title": "Saverawdanmaku",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "DataSelection": {
+                "title": "DataSelection",
+                "enum": [
+                    "all",
+                    "preparing",
+                    "living",
+                    "rounding",
+                    "monitor_enabled",
+                    "monitor_disabled",
+                    "recorder_enabled",
+                    "recorder_disabled",
+                    "stopped",
+                    "waitting",
+                    "recording",
+                    "remuxing",
+                    "injecting"
+                ],
+                "type": "string",
+                "description": "An enumeration."
+            },
+            "DeleteStrategy": {
+                "title": "DeleteStrategy",
+                "enum": [
+                    "auto",
+                    "safe",
+                    "never"
+                ],
+                "description": "An enumeration."
+            },
+            "EmailNotificationSettings": {
+                "title": "EmailNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "srcAddr": {
+                        "title": "Srcaddr",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "dstAddr": {
+                        "title": "Dstaddr",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "authCode": {
+                        "title": "Authcode",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "smtpHost": {
+                        "title": "Smtphost",
+                        "type": "string",
+                        "default": "smtp.163.com"
+                    },
+                    "smtpPort": {
+                        "title": "Smtpport",
+                        "type": "integer",
+                        "default": 465
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "HeaderOptions": {
+                "title": "HeaderOptions",
+                "type": "object",
+                "properties": {
+                    "userAgent": {
+                        "title": "Useragent",
+                        "type": "string"
+                    },
+                    "cookie": {
+                        "title": "Cookie",
+                        "type": "string"
+                    }
+                }
+            },
+            "HeaderSettings": {
+                "title": "HeaderSettings",
+                "type": "object",
+                "properties": {
+                    "userAgent": {
+                        "title": "Useragent",
+                        "type": "string",
+                        "default": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+                    },
+                    "cookie": {
+                        "title": "Cookie",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "LoggingSettings": {
+                "title": "LoggingSettings",
+                "type": "object",
+                "properties": {
+                    "logDir": {
+                        "title": "Logdir",
+                        "type": "string"
+                    },
+                    "consoleLogLevel": {
+                        "title": "Consoleloglevel",
+                        "enum": [
+                            "TRACE",
+                            "DEBUG",
+                            "INFO",
+                            "SUCCESS",
+                            "WARNING",
+                            "ERROR",
+                            "CRITICAL"
+                        ],
+                        "type": "string",
+                        "default": "INFO"
+                    },
+                    "backupCount": {
+                        "title": "Backupcount",
+                        "maximum": 90.0,
+                        "minimum": 0.0,
+                        "type": "integer",
+                        "default": 30
+                    }
+                }
+            },
+            "OutputOptions": {
+                "title": "OutputOptions",
+                "type": "object",
+                "properties": {
+                    "pathTemplate": {
+                        "title": "Pathtemplate",
+                        "type": "string"
+                    },
+                    "filesizeLimit": {
+                        "title": "Filesizelimit",
+                        "type": "integer"
+                    },
+                    "durationLimit": {
+                        "title": "Durationlimit",
+                        "type": "integer"
+                    }
+                }
+            },
+            "OutputSettings": {
+                "title": "OutputSettings",
+                "type": "object",
+                "properties": {
+                    "pathTemplate": {
+                        "title": "Pathtemplate",
+                        "type": "string",
+                        "default": "{roomid} - {uname}/blive_{roomid}_{year}-{month}-{day}-{hour}{minute}{second}"
+                    },
+                    "filesizeLimit": {
+                        "title": "Filesizelimit",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "durationLimit": {
+                        "title": "Durationlimit",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "outDir": {
+                        "title": "Outdir",
+                        "type": "string"
+                    }
+                }
+            },
+            "PostprocessingOptions": {
+                "title": "PostprocessingOptions",
+                "type": "object",
+                "properties": {
+                    "remuxToMp4": {
+                        "title": "Remuxtomp4",
+                        "type": "boolean"
+                    },
+                    "injectExtraMetadata": {
+                        "title": "Injectextrametadata",
+                        "type": "boolean"
+                    },
+                    "deleteSource": {
+                        "$ref": "#/components/schemas/DeleteStrategy"
+                    }
+                }
+            },
+            "PostprocessingSettings": {
+                "title": "PostprocessingSettings",
+                "type": "object",
+                "properties": {
+                    "remuxToMp4": {
+                        "title": "Remuxtomp4",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "injectExtraMetadata": {
+                        "title": "Injectextrametadata",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "deleteSource": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DeleteStrategy"
+                            }
+                        ],
+                        "default": "auto"
+                    }
+                }
+            },
+            "PushdeerNotificationSettings": {
+                "title": "PushdeerNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "server": {
+                        "title": "Server",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "pushkey": {
+                        "title": "Pushkey",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "PushplusNotificationSettings": {
+                "title": "PushplusNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "text"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "markdown"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "token": {
+                        "title": "Token",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "topic": {
+                        "title": "Topic",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "RecorderOptions": {
+                "title": "RecorderOptions",
+                "type": "object",
+                "properties": {
+                    "streamFormat": {
+                        "title": "Streamformat",
+                        "enum": [
+                            "flv",
+                            "ts",
+                            "fmp4"
+                        ],
+                        "type": "string"
+                    },
+                    "recordingMode": {
+                        "title": "Recordingmode",
+                        "enum": [
+                            "standard",
+                            "raw"
+                        ],
+                        "type": "string"
+                    },
+                    "qualityNumber": {
+                        "title": "Qualitynumber",
+                        "enum": [
+                            20000,
+                            10000,
+                            401,
+                            400,
+                            250,
+                            150,
+                            80
+                        ],
+                        "type": "integer"
+                    },
+                    "fmp4StreamTimeout": {
+                        "title": "Fmp4Streamtimeout",
+                        "type": "integer"
+                    },
+                    "readTimeout": {
+                        "title": "Readtimeout",
+                        "type": "integer"
+                    },
+                    "disconnectionTimeout": {
+                        "title": "Disconnectiontimeout",
+                        "type": "integer"
+                    },
+                    "bufferSize": {
+                        "title": "Buffersize",
+                        "multipleOf": 2.0,
+                        "maximum": 536870912.0,
+                        "minimum": 4096.0,
+                        "type": "integer"
+                    },
+                    "saveCover": {
+                        "title": "Savecover",
+                        "type": "boolean"
+                    },
+                    "coverSaveStrategy": {
+                        "$ref": "#/components/schemas/CoverSaveStrategy"
+                    }
+                }
+            },
+            "RecorderSettings": {
+                "title": "RecorderSettings",
+                "type": "object",
+                "properties": {
+                    "streamFormat": {
+                        "title": "Streamformat",
+                        "enum": [
+                            "flv",
+                            "ts",
+                            "fmp4"
+                        ],
+                        "type": "string",
+                        "default": "flv"
+                    },
+                    "recordingMode": {
+                        "title": "Recordingmode",
+                        "enum": [
+                            "standard",
+                            "raw"
+                        ],
+                        "type": "string",
+                        "default": "standard"
+                    },
+                    "qualityNumber": {
+                        "title": "Qualitynumber",
+                        "enum": [
+                            20000,
+                            10000,
+                            401,
+                            400,
+                            250,
+                            150,
+                            80
+                        ],
+                        "type": "integer",
+                        "default": 20000
+                    },
+                    "fmp4StreamTimeout": {
+                        "title": "Fmp4Streamtimeout",
+                        "type": "integer",
+                        "default": 10
+                    },
+                    "readTimeout": {
+                        "title": "Readtimeout",
+                        "type": "integer",
+                        "default": 3
+                    },
+                    "disconnectionTimeout": {
+                        "title": "Disconnectiontimeout",
+                        "type": "integer",
+                        "default": 600
+                    },
+                    "bufferSize": {
+                        "title": "Buffersize",
+                        "multipleOf": 2.0,
+                        "maximum": 536870912.0,
+                        "minimum": 4096.0,
+                        "type": "integer",
+                        "default": 8192
+                    },
+                    "saveCover": {
+                        "title": "Savecover",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "coverSaveStrategy": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/CoverSaveStrategy"
+                            }
+                        ],
+                        "default": "default"
+                    }
+                }
+            },
+            "ResponseMessage": {
+                "title": "ResponseMessage",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Code",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "message": {
+                        "title": "Message",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "data": {
+                        "title": "Data",
+                        "type": "object"
+                    }
+                }
+            },
+            "ServerchanNotificationSettings": {
+                "title": "ServerchanNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "enum": [
+                            "markdown"
+                        ],
+                        "type": "string",
+                        "default": "markdown"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "enum": [
+                            "markdown"
+                        ],
+                        "type": "string",
+                        "default": "markdown"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "enum": [
+                            "markdown"
+                        ],
+                        "type": "string",
+                        "default": "markdown"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "enum": [
+                            "markdown"
+                        ],
+                        "type": "string",
+                        "default": "markdown"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "sendkey": {
+                        "title": "Sendkey",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "SettingsIn": {
+                "title": "SettingsIn",
+                "type": "object",
+                "properties": {
+                    "output": {
+                        "$ref": "#/components/schemas/OutputSettings"
+                    },
+                    "logging": {
+                        "$ref": "#/components/schemas/LoggingSettings"
+                    },
+                    "biliApi": {
+                        "$ref": "#/components/schemas/BiliApiSettings"
+                    },
+                    "header": {
+                        "$ref": "#/components/schemas/HeaderSettings"
+                    },
+                    "danmaku": {
+                        "$ref": "#/components/schemas/DanmakuSettings"
+                    },
+                    "recorder": {
+                        "$ref": "#/components/schemas/RecorderSettings"
+                    },
+                    "postprocessing": {
+                        "$ref": "#/components/schemas/PostprocessingSettings"
+                    },
+                    "space": {
+                        "$ref": "#/components/schemas/SpaceSettings"
+                    },
+                    "emailNotification": {
+                        "$ref": "#/components/schemas/EmailNotificationSettings"
+                    },
+                    "serverchanNotification": {
+                        "$ref": "#/components/schemas/ServerchanNotificationSettings"
+                    },
+                    "pushdeerNotification": {
+                        "$ref": "#/components/schemas/PushdeerNotificationSettings"
+                    },
+                    "pushplusNotification": {
+                        "$ref": "#/components/schemas/PushplusNotificationSettings"
+                    },
+                    "telegramNotification": {
+                        "$ref": "#/components/schemas/TelegramNotificationSettings"
+                    },
+                    "barkNotification": {
+                        "$ref": "#/components/schemas/BarkNotificationSettings"
+                    },
+                    "webhooks": {
+                        "title": "Webhooks",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WebHookSettings"
+                        }
+                    }
+                }
+            },
+            "SettingsOut": {
+                "title": "SettingsOut",
+                "type": "object",
+                "properties": {
+                    "output": {
+                        "$ref": "#/components/schemas/OutputSettings"
+                    },
+                    "logging": {
+                        "$ref": "#/components/schemas/LoggingSettings"
+                    },
+                    "biliApi": {
+                        "$ref": "#/components/schemas/BiliApiSettings"
+                    },
+                    "header": {
+                        "$ref": "#/components/schemas/HeaderSettings"
+                    },
+                    "danmaku": {
+                        "$ref": "#/components/schemas/DanmakuSettings"
+                    },
+                    "recorder": {
+                        "$ref": "#/components/schemas/RecorderSettings"
+                    },
+                    "postprocessing": {
+                        "$ref": "#/components/schemas/PostprocessingSettings"
+                    },
+                    "space": {
+                        "$ref": "#/components/schemas/SpaceSettings"
+                    },
+                    "emailNotification": {
+                        "$ref": "#/components/schemas/EmailNotificationSettings"
+                    },
+                    "serverchanNotification": {
+                        "$ref": "#/components/schemas/ServerchanNotificationSettings"
+                    },
+                    "pushdeerNotification": {
+                        "$ref": "#/components/schemas/PushdeerNotificationSettings"
+                    },
+                    "pushplusNotification": {
+                        "$ref": "#/components/schemas/PushplusNotificationSettings"
+                    },
+                    "telegramNotification": {
+                        "$ref": "#/components/schemas/TelegramNotificationSettings"
+                    },
+                    "barkNotification": {
+                        "$ref": "#/components/schemas/BarkNotificationSettings"
+                    },
+                    "webhooks": {
+                        "title": "Webhooks",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WebHookSettings"
+                        }
+                    },
+                    "version": {
+                        "title": "Version",
+                        "type": "string"
+                    },
+                    "tasks": {
+                        "title": "Tasks",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TaskSettings"
+                        }
+                    }
+                }
+            },
+            "SpaceSettings": {
+                "title": "SpaceSettings",
+                "type": "object",
+                "properties": {
+                    "checkInterval": {
+                        "title": "Checkinterval",
+                        "type": "integer",
+                        "default": 60
+                    },
+                    "spaceThreshold": {
+                        "title": "Spacethreshold",
+                        "type": "integer",
+                        "default": 1073741824
+                    },
+                    "recycleRecords": {
+                        "title": "Recyclerecords",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "TaskOptions": {
+                "title": "TaskOptions",
+                "type": "object",
+                "properties": {
+                    "output": {
+                        "title": "Output",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/OutputOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "header": {
+                        "title": "Header",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/HeaderOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "danmaku": {
+                        "title": "Danmaku",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DanmakuOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "recorder": {
+                        "title": "Recorder",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/RecorderOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "postprocessing": {
+                        "title": "Postprocessing",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PostprocessingOptions"
+                            }
+                        ],
+                        "default": {}
+                    }
+                }
+            },
+            "TaskSettings": {
+                "title": "TaskSettings",
+                "required": [
+                    "roomId"
+                ],
+                "type": "object",
+                "properties": {
+                    "output": {
+                        "title": "Output",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/OutputOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "header": {
+                        "title": "Header",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/HeaderOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "danmaku": {
+                        "title": "Danmaku",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/DanmakuOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "recorder": {
+                        "title": "Recorder",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/RecorderOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "postprocessing": {
+                        "title": "Postprocessing",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/PostprocessingOptions"
+                            }
+                        ],
+                        "default": {}
+                    },
+                    "roomId": {
+                        "title": "Roomid",
+                        "maximum": 99999999.0,
+                        "minimum": 1.0,
+                        "type": "integer"
+                    },
+                    "enableMonitor": {
+                        "title": "Enablemonitor",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enableRecorder": {
+                        "title": "Enablerecorder",
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "TelegramNotificationSettings": {
+                "title": "TelegramNotificationSettings",
+                "type": "object",
+                "properties": {
+                    "beganMessageType": {
+                        "title": "Beganmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "beganMessageTitle": {
+                        "title": "Beganmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "beganMessageContent": {
+                        "title": "Beganmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageType": {
+                        "title": "Endedmessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "endedMessageTitle": {
+                        "title": "Endedmessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "endedMessageContent": {
+                        "title": "Endedmessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageType": {
+                        "title": "Spacemessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "spaceMessageTitle": {
+                        "title": "Spacemessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "spaceMessageContent": {
+                        "title": "Spacemessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageType": {
+                        "title": "Errormessagetype",
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "markdown"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "enum": [
+                                    "html"
+                                ],
+                                "type": "string"
+                            }
+                        ],
+                        "default": "html"
+                    },
+                    "errorMessageTitle": {
+                        "title": "Errormessagetitle",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "errorMessageContent": {
+                        "title": "Errormessagecontent",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "notifyBegan": {
+                        "title": "Notifybegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyEnded": {
+                        "title": "Notifyended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifyError": {
+                        "title": "Notifyerror",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "notifySpace": {
+                        "title": "Notifyspace",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "token": {
+                        "title": "Token",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "chatid": {
+                        "title": "Chatid",
+                        "type": "string",
+                        "default": ""
+                    },
+                    "server": {
+                        "title": "Server",
+                        "type": "string",
+                        "default": ""
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "WebHookSettings": {
+                "title": "WebHookSettings",
+                "required": [
+                    "url"
+                ],
+                "type": "object",
+                "properties": {
+                    "liveBegan": {
+                        "title": "Livebegan",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "liveEnded": {
+                        "title": "Liveended",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "roomChange": {
+                        "title": "Roomchange",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordingStarted": {
+                        "title": "Recordingstarted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordingFinished": {
+                        "title": "Recordingfinished",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recordingCancelled": {
+                        "title": "Recordingcancelled",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "videoFileCreated": {
+                        "title": "Videofilecreated",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "videoFileCompleted": {
+                        "title": "Videofilecompleted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "danmakuFileCreated": {
+                        "title": "Danmakufilecreated",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "danmakuFileCompleted": {
+                        "title": "Danmakufilecompleted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "rawDanmakuFileCreated": {
+                        "title": "Rawdanmakufilecreated",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "rawDanmakuFileCompleted": {
+                        "title": "Rawdanmakufilecompleted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "coverImageDownloaded": {
+                        "title": "Coverimagedownloaded",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "videoPostprocessingCompleted": {
+                        "title": "Videopostprocessingcompleted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "postprocessingCompleted": {
+                        "title": "Postprocessingcompleted",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "spaceNoEnough": {
+                        "title": "Spacenoenough",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "errorOccurred": {
+                        "title": "Erroroccurred",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "url": {
+                        "title": "Url",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
