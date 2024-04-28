@@ -1,4 +1,4 @@
-module github.com/wintbiit/brec-sdk-go
+module github.com/wintbiit/blrec-sdk-go
 
 go 1.18
 
